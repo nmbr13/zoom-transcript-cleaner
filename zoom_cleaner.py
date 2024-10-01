@@ -9,27 +9,15 @@ def clean_transcript(file, newfile):
 
   newlines = []
   speaker = ""
-  paragraph = ""
-  newspeaker = True
   for l in lines: 
     nameregex = r"\w+\s\w+:"
-    if re.match(nameregex,l):
-      # print(l.split(":")[0] , speaker, l.split(":")[0] == speaker)
-      
+    if re.match(nameregex,l):     
       if l.split(":")[0] != speaker:
-        newspeaker = True
         speaker = l.split(":")[0]
-      else:
-        newspeaker = False
-      
-      if newspeaker:
         newlines.append("\n\n" + l)
-
-        paragraph = "\n" + l
-
       else:
-        # paragraph += l.split(":")[1][1:]
         newlines.append(l.split(":")[1][1:])
+
   transcript = "".join(newlines)
   text1= re.sub(r'(?<=[a-z., ]{2})\n(?!\n)', ' ', transcript)
 
