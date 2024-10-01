@@ -25,4 +25,5 @@ def clean_transcript(file, newfile):
   f.writelines(text1)
   f.close()
 
-clean_transcript(sys.argv[0], sys.argv[1])
+#replace the names here to point to your transcript file and then what ever you want to name you new file. 
+clean_transcript("mytranscript.transcript.vtt","clean_file.txt")
